@@ -1,33 +1,36 @@
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+#include <stdio.h>
 
-# Precompiled Headers
-*.gch
-*.pch
+void main()
+{
+     #define IGV 1.18
+     #define SEGURO 150
+     float minutos, megas, x, y;
+   
+     printf("\n Ingrese la cantidad de minutos consumidos: ");
+     scanf("%f", &minutos);
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+     printf("\n Ingrese la cantidad de megas consumidos: ");
+     scanf("%f", &megas);
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
+     if ((minutos <= 100) && (megas <= 500))
+            printf("El total a pagar es %f\n",IGV*(SEGURO+20));
+     else
+     {
+           if ((minutos <= 100) && (megas > 500))
+           {
+                    x = 0.05*(megas-500);
+            printf("El total a pagar es %f\n",IGV*(SEGURO+x+20));
+           }
+           if ((minutos > 100) && (megas <= 500))
+           {
+                    y = 0.2*(minutos-100);
+            printf("El total a pagar es %f\n",IGV*(SEGURO+y+20));
+           }
+           if ((minutos > 100) && (megas > 500))
+           {
+                    x = 0.05*(megas-500);
+                    y = 0.2*(minutos-100);
+            printf("El total a pagar es %f\n",IGV*(SEGURO+x+y+20));
+           }
+     }
+}
